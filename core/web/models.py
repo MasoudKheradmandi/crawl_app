@@ -1,6 +1,11 @@
 from django.db import models
 
 class WebSite(models.Model):
+    CRAWL_CHOICES = (
+        ('crawl','crawl'),
+        ('rss','rss'),
+    )
+    crawl_strategies = models.CharField(max_length=200,choices=CRAWL_CHOICES)
     link = models.CharField(max_length=450)
     code = models.TextField()
     status = models.BooleanField(default=False)
