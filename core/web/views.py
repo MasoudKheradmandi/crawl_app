@@ -1,9 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse
+from django.db import IntegrityError
 from .crawl import crawl_response
-from .models import Post
+from .models import Post,WebSite
 
 
 def home(request):
-    x = crawl_response()
-
-    # Post.objects.create(website=1,title=)
+    data = crawl_response()
+    webr=WebSite.objects.get(id=1)
+    for web in data:
+        Post.objects.get_or_create(website=webr,title=web['title'],post_link=web['link'])
+    return HttpResponse("Done")

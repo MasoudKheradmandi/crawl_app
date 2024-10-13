@@ -12,11 +12,11 @@ class WebSite(models.Model):
 class Post(models.Model):
     website = models.ForeignKey(WebSite,on_delete=models.CASCADE)
     title = models.TextField()
-    post_link = models.TextField()
+    post_link = models.URLField(db_index=True,unique=True)
     time = models.DateField(null=True)
     status = models.BooleanField(default=False)
 
 
     def __str__(self):
-        return self.title + "  " + self.time.day + "  " + self.website.link
+        return self.title + "  " + self.website.link
 

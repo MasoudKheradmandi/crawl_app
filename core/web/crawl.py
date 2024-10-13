@@ -7,4 +7,6 @@ def crawl_response():
     web=WebSite.objects.get(id=1)
     print('ss')
     m = web.code
-    return exec(m)
+    index = {}
+    r= exec(m,index)
+    return list(index['my_list'])
