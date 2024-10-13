@@ -3,7 +3,7 @@
 .vscode
 todo.txt
 *.sqlite3
-
+test2.py
 
 # Environments
 *.env
